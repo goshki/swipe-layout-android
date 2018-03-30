@@ -11,6 +11,8 @@ buildscript {
         classpath 'ru.rambler.android:AndroidPublication:0.4.0'
     }
 }
+def version = "1.0.15"
+def code = 10015
 
 android {
     compileSdkVersion 27
