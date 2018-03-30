@@ -1,16 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'android-publication'
 
-buildscript {
-    repositories {
-        maven {
-            url 'http://jenkins01.mobile.rambler.ru:7700/nexus/content/repositories/rambler-internal/'
-        }
-    }
-    dependencies {
-        classpath 'ru.rambler.android:AndroidPublication:0.4.0'
-    }
-}
 def version = "1.0.15"
 def code = 10015
 
