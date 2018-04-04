@@ -1,16 +1,15 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
-def version = "1.0.14"
-def code = 10014
+def version = "1.0.15"
+def code = 10015
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 24
+        minSdkVersion 21
+        targetSdkVersion 27
         versionCode code
         versionName version
     }
@@ -24,42 +23,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-core-ui:24.2.1'
-}
-
-task sourcesJar(type: Jar) {
-    project
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath = files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-publish {
-    bintrayUser = properties.getProperty('bintray.user')
-    bintrayKey = properties.getProperty('bintray.apikey')
-    dryRun = false
-    groupId = 'ru.rambler.android'
-    artifactId = 'swipe-layout'
-    publishVersion = version
-    desc = 'Android UI widget'
-    licences = ['Apache-2.0']
-    website = 'https://github.com/rambler-digital-solutions/swipe-layout-android'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-core-ui:27.1.0'
 }
