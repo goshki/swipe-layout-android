@@ -653,6 +653,10 @@ public class SwipeLayout extends ViewGroup {
                 if (touchState == TOUCH_STATE_SWIPE) {
                     unHackParents();
                     requestDisallowInterceptTouchEvent(false);
+
+                    if (swipeListener != null)
+                        swipeListener.onEndSwipe(this, event.getX() > touchX);
+
                 }
                 touchState = TOUCH_STATE_WAIT;
                 break;
@@ -763,6 +767,8 @@ public class SwipeLayout extends ViewGroup {
 
     public interface OnSwipeListener {
         void onBeginSwipe(SwipeLayout swipeLayout, boolean moveToRight);
+
+        void onEndSwipe(SwipeLayout swipeLayout, boolean moveToRight);
 
         void onSwipeClampReached(SwipeLayout swipeLayout, boolean moveToRight);
 
